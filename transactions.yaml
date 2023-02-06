@@ -1,0 +1,474 @@
+accounts:
+  alice: //Alice
+  bob: //Bob
+  charlie: //Charlie
+
+prefunded_account:
+  alice
+
+fund_accounts:
+  - charlie
+
+programs:
+  - name: Non-Fungible Token 0
+    id: 0
+    path_to_wasm: ./programs/nft.opt.wasm
+    path_to_meta: ./programs/meta-nft.txt
+    init_payload: 
+      name: GNFT
+      symbol: GNFT
+      base_uri: https://gear-tech.io
+      royalties: null
+
+  - name: Non-Fungible Token 1
+    id: 1
+    path_to_wasm: ./programs/nft.opt.wasm
+    path_to_meta: ./programs/meta-nft.txt
+    init_payload: 
+      name: GNFT
+      symbol: GNFT
+      base_uri: https://gear-tech.io
+      royalties: null
+
+  - name: Non-Fungible Token 2
+    id: 2
+    path_to_wasm: ./programs/nft.opt.wasm
+    path_to_meta: ./programs/meta-nft.txt
+    init_payload: 
+      name: GNFT
+      symbol: GNFT
+      base_uri: https://gear-tech.io
+      royalties: null
+      
+  - name: Non-Fungible Token 3
+    id: 3
+    path_to_wasm: ./programs/nft.opt.wasm
+    path_to_meta: ./programs/meta-nft.txt
+    init_payload: 
+      name: GNFT
+      symbol: GNFT
+      base_uri: https://gear-tech.io
+      royalties: null
+
+  - name: Nft Marketplace
+    id: 4
+    path_to_wasm: ./programs/nft_marketplace.opt.wasm
+    path_to_meta: ./programs/meta-marketplace.txt
+    init_payload: 
+      admin_id: $account alice
+      treasury_id: $account alice
+      treasury_fee: 2
+
+transactions:
+  - type: upload
+    program: 0
+    account: alice
+
+  - type: upload
+    program: 1
+    account: alice
+
+  - type: upload
+    program: 2
+    account: alice
+
+  - type: upload
+    program: 3
+    account: alice
+
+  - type: upload
+    program: 4
+    account: alice
+
+  - type: message
+    program: 0
+    account: alice
+    payload:
+      Mint:
+        transaction_id: 0
+        token_metadata: 
+          TokenMetadata:
+            name: Token_0
+            description: Description
+            media: https://
+            reference: https://
+    value: 0
+
+  - type: message
+    program: 0
+    account: alice
+    payload:
+      Mint:
+        transaction_id: 1
+        token_metadata: 
+          TokenMetadata:
+            name: Token_1
+            description: Description
+            media: https://
+            reference: https://
+    value: 0
+
+  - type: message
+    program: 0
+    account: alice
+    payload:
+      Mint:
+        transaction_id: 2
+        token_metadata: 
+          TokenMetadata:
+            name: Token_2
+            description: Description
+            media: https://
+            reference: https://
+    value: 0
+
+  - type: message
+    program: 0
+    account: alice
+    payload:
+      Mint:
+        transaction_id: 3
+        token_metadata: 
+          TokenMetadata:
+            name: Token_3
+            description: Description
+            media: https://
+            reference: https://
+    value: 0
+
+  - type: message
+    program: 0
+    account: alice
+    payload:
+      Mint:
+        transaction_id: 4
+        token_metadata: 
+          TokenMetadata:
+            name: Token_4
+            description: Description
+            media: https://
+            reference: https://
+    value: 0
+
+  - type: message
+    program: 0
+    account: alice
+    payload:
+      Approve:
+        transaction_id: 5
+        to: $program 4
+        token_id: 0
+    value: 0
+
+  - type: message
+    program: 0
+    account: alice
+    payload:
+      Approve:
+        transaction_id: 6
+        to: $program 4
+        token_id: 1
+    value: 0
+
+  - type: message
+    program: 0
+    account: alice
+    payload:
+      Approve:
+        transaction_id: 7
+        to: $program 4
+        token_id: 2
+    value: 0
+
+  - type: message
+    program: 0
+    account: alice
+    payload:
+      Approve:
+        transaction_id: 8
+        to: $program 4
+        token_id: 3
+    value: 0
+
+  - type: message
+    program: 0
+    account: alice
+    payload:
+      Approve:
+        transaction_id: 9
+        to: $program 4
+        token_id: 4
+    value: 0
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      AddNftContract: $program 0
+    value: 0
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      AddMarketData: 
+        nft_contract_id: $program 0
+        ft_contract_id: Null
+        token_id: 0
+        price: 100000
+    value: 0
+    increase_gas: 0.2
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      AddMarketData: 
+        nft_contract_id: $program 0
+        ft_contract_id: Null
+        token_id: 1
+        price: 200000
+    value: 0
+    increase_gas: 0.2
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      AddMarketData: 
+        nft_contract_id: $program 0
+        ft_contract_id: Null
+        token_id: 2
+        price: 300000
+    value: 0
+    increase_gas: 0.3
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      AddMarketData: 
+        nft_contract_id: $program 0
+        ft_contract_id: Null
+        token_id: 3
+        price: 400000
+    value: 0
+    increase_gas: 0.3
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      AddMarketData: 
+        nft_contract_id: $program 0
+        ft_contract_id: Null
+        token_id: 4
+        price: 500000
+    value: 0
+    increase_gas: 0.2
+
+  - type: message
+    program: 4
+    account: bob
+    payload:
+      BuyItem: 
+        nft_contract_id: $program 0
+        token_id: 0
+    value: 100000
+    increase_gas: 0.2
+
+  - type: message
+    program: 4
+    account: bob
+    payload:
+      BuyItem: 
+        nft_contract_id: $program 0
+        token_id: 1
+    value: 200000
+    increase_gas: 0.2
+
+  - type: message
+    program: 4
+    account: bob
+    payload:
+      BuyItem: 
+        nft_contract_id: $program 0
+        token_id: 2
+    value: 300000
+    increase_gas: 0.2
+
+  - type: message
+    program: 4
+    account: bob
+    payload:
+      BuyItem: 
+        nft_contract_id: $program 0
+        token_id: 3
+    value: 400000
+    increase_gas: 0.2
+
+  - type: message
+    program: 4
+    account: bob
+    payload:
+      BuyItem: 
+        nft_contract_id: $program 0
+        token_id: 4
+    value: 500000
+    increase_gas: 0.5
+
+  - type: message
+    program: 1
+    account: bob
+    payload:
+      Mint:
+        transaction_id: 0
+        token_metadata: 
+          TokenMetadata:
+            name: Token_0
+            description: Description
+            media: https://
+            reference: https://
+    value: 0
+
+  - type: message
+    program: 1
+    account: bob
+    payload:
+      Approve:
+        transaction_id: 2
+        to: $program 4
+        token_id: 0
+    value: 0
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      AddNftContract: $program 1
+    value: 0
+
+  - type: message
+    program: 4
+    account: bob
+    payload:
+      AddMarketData: 
+        nft_contract_id: $program 1
+        ft_contract_id: Null
+        token_id: 0
+        price: 100000
+    value: 0
+    increase_gas: 0.3
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      AddOffer: 
+        nft_contract_id: $program 1
+        ft_contract_id: Null
+        token_id: 0
+        price: 110000
+    value: 110000
+
+  - type: message
+    program: 4
+    account: charlie
+    payload:
+      AddOffer: 
+        nft_contract_id: $program 1
+        ft_contract_id: Null
+        token_id: 0
+        price: 120000
+    value: 120000
+
+  - type: message
+    program: 4
+    account: bob
+    payload:
+      AddMarketData:
+        nft_contract_id: $program 1
+        ft_contract_id: Null
+        token_id: 0
+        price: null
+    value: 0
+    increase_gas: 0.2
+
+  - type: message
+    program: 4
+    account: bob
+    payload:
+      AcceptOffer: 
+        nft_contract_id: $program 1
+        ft_contract_id: Null
+        token_id: 0
+        price: 120000
+    value: 0
+    increase_gas: 0.2
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      Withdraw: 
+        nft_contract_id: $program 1
+        ft_contract_id: Null
+        token_id: 0
+        price: 110000
+    value: 0
+
+  - type: message
+    program: 4
+    account: charlie
+    payload:
+      CreateAuction: 
+        nft_contract_id: $program 1
+        ft_contract_id: Null
+        token_id: 0
+        min_price: 200000
+        bid_period: 60000
+        duration: 300000
+    value: 0
+    increase_gas: 0.2
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      AddBid: 
+        nft_contract_id: $program 1
+        token_id: 0
+        price: 310000
+    value: 310000
+
+  - type: message
+    program: 4
+    account: bob
+    payload:
+      AddBid: 
+        nft_contract_id: $program 1
+        token_id: 0
+        price: 400000
+    value: 400000
+
+  - type: message
+    program: 4
+    account: alice
+    payload:
+      AddBid: 
+        nft_contract_id: $program 1
+        token_id: 0
+        price: 500000
+    value: 500000
+
+  - type: message
+    program: 4
+    account: bob
+    payload:
+      AddBid: 
+        nft_contract_id: $program 1
+        token_id: 0
+        price: 600000
+    value: 600000
+
+  
