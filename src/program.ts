@@ -3,7 +3,7 @@ import { isMsgDispatchedSuccessfully } from './findEvents';
 import { KeyringPair } from '@polkadot/keyring/types';
 import { u8aToHex, isHex } from '@polkadot/util';
 import fs from 'fs';
-import { IProgram } from './types';
+import { IProgram, SchemeProgram } from './types';
 
 export async function uploadProgram(
   api: GearApi,
@@ -57,7 +57,7 @@ export async function uploadProgram(
   throw new Error(`Program initialization failed`);
 }
 
-export function getPrograms(programs: Array<any>) {
+export function getPrograms(programs: Array<SchemeProgram>): Record<number, IProgram> {
   const result: Record<number, IProgram> = {};
 
   programs.forEach(({ id, ...rest }) => {
