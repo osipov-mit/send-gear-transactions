@@ -36,6 +36,7 @@ export function validateScheme(scheme: IScheme) {
       if (code.id === undefined) {
         errors.push({ error: `Code id is not specified.`, value: getValue(code) });
       }
+      codeIds.push(code.id);
       if (!code.name) {
         errors.push({ error: `Code name is not specified.`, value: getValue(code) });
       }
@@ -59,7 +60,7 @@ export function validateScheme(scheme: IScheme) {
         errors.push({ error: `Code id is not specified.`, value: getValue(transaction) });
       }
       if (!codeIds.includes(transaction.code)) {
-        errors.push({ error: `Program with id ${transaction.code} not found`, value: getValue(transaction) });
+        errors.push({ error: `Code with id ${transaction.code} not found`, value: getValue(transaction) });
       }
     }
 
